@@ -21,7 +21,7 @@ def get_all_image_files(folder: str) -> List[str]:
     """
     Get all image files in the specified folder.
     """
-    image_files = []
+    image_files: List[str] = []
     for root, _, files in os.walk(folder):
         for file in files:
             if file.lower().endswith((".jpg", ".jpeg", ".png")):
@@ -41,8 +41,8 @@ def build_pdf(image_files: List[str], output_file_name: str) -> None:
 def main():
     folders: List[str] = get_all_folders_in_input()
     for folder in folders:
-        folder_path = os.path.join(INPUT_FOLDER, folder)
-        image_files = get_all_image_files(folder_path)
+        folder_path: str = os.path.join(INPUT_FOLDER, folder)
+        image_files: List[str] = get_all_image_files(folder_path)
         if image_files:
             output_file_name: str = folder + ".pdf"
             build_pdf(image_files, output_file_name)
